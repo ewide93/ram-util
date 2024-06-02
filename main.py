@@ -48,6 +48,8 @@ def main() -> None:
     plt.axhline(ram_usage_lim, label="RAM limit (GB)", color="r", linestyle="dashed")
     ax.plot(timestamps, ram_usage, label="Total RAM usage (GB)", color="k")
     ax.plot(timestamps, rss, label="Process RAM usage (GB)", color="y")
+    ax.plot(timestamps[rss.index(max(rss))], max(rss), "yo", label=f"Max process RAM usage: {max(rss)} GB")
+    ax.plot(timestamps[ram_usage.index(max(ram_usage))], max(ram_usage), "ko", label=f"Max total RAM usage: {max(ram_usage)} GB")
     ax.grid()
     ax.set_title("Resource utilization: RAM")
     ax.set_ylabel("RAM usage (GB)")
